@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Digital Witch Cloud Security / DevOps Project On Bank Managmenet App
+## This is the frontend app which is coded and  Create React App comprising CSS, Html, js. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Note this app highly depend on the backend to run. ensure the backend is running fine. 
 
-## Available Scripts
+## Also note that it is also containerized to run on port 3000
 
-In the project directory, you can run:
+### This is the architecture of the project
+![App Preview](architecture-HIPPAA.drawio.svg)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## The Dockerfile runs the following to bring the app up
 
-### `npm test`
+In the project directory, you can see the Dockerfile:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Stage 1: Build the React application 
+### `FROM node:18 AS build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Set the working directory
+### `WORKDIR /app`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Copy package.json and package-lock.json to the container
+### `COPY package.json package-lock.json ./`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Install dependencies
+### `RUN npm install`
 
-### `npm run eject`
+### Copy the rest of the app's source code
+### `COPY . .`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Build the application
+### `RUN npm run build#
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Stage 2: Serve the built application with a lightweight web server
+### `FROM nginx:stable-alpine`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Copy the build output to the nginx HTML folder
+### `COPY --from=build /app/build /usr/share/nginx/html`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Copy custom nginx configuration, if any (optional)
+### `COPY nginx.conf /etc/nginx/conf.d/default.conf`
 
-## Learn More
+## Expose the default nginx port
+### `EXPOSE 3000`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Start nginx server
+## `CMD ["nginx", "-g", "daemon off;"]`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
