@@ -7,13 +7,14 @@ const AdminRegisterForm = () => {
   let navigate = useNavigate();
 
   const [registerRequest, setRegisterRequest] = useState({});
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const handleUserInput = (e) => {
     setRegisterRequest({ ...registerRequest, [e.target.name]: e.target.value });
   };
 
   const loginAction = (e) => {
-    fetch("http://localhost:8080/api/user/admin/register", {
+    fetch(`${API_BASE_URL}/api/user/admin/register`, {
       method: "POST",
       headers: {
         Accept: "application/json",

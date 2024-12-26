@@ -12,6 +12,8 @@ const ViewAllBankCustomers = () => {
 
   const [tempCustomerName, setTempCustomerName] = useState("");
 
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const [updateUserStatusRequest, setUpdateUserStatusRequest] = useState({
     userId: "",
     status: "",
@@ -21,7 +23,7 @@ const ViewAllBankCustomers = () => {
 
   const retrieveBankAllCustomerByName = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/user/all/customer/search?" +
+      `${API_BASE_URL}/api/user/all/customer/search?` +
         "customerName=" +
         customerName,
       {

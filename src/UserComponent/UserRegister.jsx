@@ -7,6 +7,7 @@ const UserRegister = () => {
   const navigate = useNavigate();
 
   const bank = JSON.parse(sessionStorage.getItem("active-bank"));
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const [user, setUser] = useState({
     name: "",
@@ -46,7 +47,7 @@ const UserRegister = () => {
       jwtToken = sessionStorage.getItem("admin-jwtToken"); // Use admin's JWT token for bank register
     }
 
-    fetch("http://localhost:8080/api/user/register", {
+    fetch(`${API_BASE_URL}/api/user/register`, {
       method: "POST",
       headers: {
         Accept: "application/json",

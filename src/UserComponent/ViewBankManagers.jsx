@@ -10,9 +10,11 @@ const ViewBankManagers = () => {
 
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
 
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const retrieveAllManagers = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/user/fetch/role?role=BANK",
+      `${API_BASE_URL}/api/user/fetch/role?role=BANK`,
       {
         headers: {
           Authorization: "Bearer " + admin_jwtToken, // Replace with your actual JWT token
