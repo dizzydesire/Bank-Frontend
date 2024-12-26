@@ -17,3 +17,9 @@ spec:
         image: supportcloud160/bank-app-frontend:b219162  # Replace this with your Docker image name
         ports:
         - containerPort: 3000 # Replace with your app's port if necessary
+        env:
+        - name: REACT_APP_API_URL
+          valueFrom:
+            configMapKeyRef:
+              name: bank-frontend-config
+              key: REACT_APP_API_URL
