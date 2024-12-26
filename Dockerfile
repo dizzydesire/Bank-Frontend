@@ -4,6 +4,11 @@ WORKDIR /app
 
 COPY package*.json ./
 
+
+RUN npm install --save react react-dom @types/react @types/react-dom
+
+RUN npm install react-scripts --save
+
 RUN npm install
 
 # Cache the node_modules directory
