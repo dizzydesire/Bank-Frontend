@@ -11,7 +11,7 @@ RUN npm install react-scripts --save
 
 RUN npm install
 
-RUN npm audit fix -f
+RUN npm audit fix --force
 
 # Cache the node_modules directory
 COPY . .
