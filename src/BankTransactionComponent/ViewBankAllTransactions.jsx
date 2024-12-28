@@ -25,6 +25,7 @@ const ViewBankAllTransactions = () => {
   };
 
   useEffect(() => {
+
     const getAllTransactions = async () => {
       const transactions = await retrieveAllTransactions();
       if (transactions) {
