@@ -41,6 +41,8 @@ jobs:
          npm install --save react react-dom @types/react @types/react-dom
          npm install react-scripts@3.0.1  --save
          npm install
+         npm install --save-dev @babel/plugin-proposal-private-property-in-object
+
          # Attempt to fix vulnerabilities, but continue if it fails
          RUN npm audit fix --force || echo "Continuing despite npm audit fix failures"
 
