@@ -13,7 +13,7 @@
 //   };
 
 //   const loginAction = (e) => {
-//     fetch("http://159.65.87.124:8080/api/user/admin/register", {
+//     fetch("https://bankapi.cloudwitches.online/api/user/admin/register", {
 //       method: "POST",
 //       headers: {
 //         Accept: "application/json",
@@ -143,7 +143,7 @@ const AdminRegisterForm = () => {
   };
 
   const loginAction = (e) => {
-    fetch("http://159.65.87.124:8080/api/user/admin/register", {
+    fetch("https://bankapi.cloudwitches.online/api/user/admin/register", {
       method: "POST",
       headers: {
         Accept: "application/json",

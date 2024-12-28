@@ -27,7 +27,7 @@ const AddBankAccount = () => {
   };
 
   const saveAccount = (e) => {
-    fetch("http://159.65.87.124:8080/api/bank/account/add", {
+    fetch("https://bankapi.cloudwitches.online/api/bank/account/add", {
       method: "POST",
       headers: {
         Accept: "application/json",

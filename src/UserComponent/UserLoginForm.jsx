@@ -13,7 +13,7 @@ const UserLoginForm = () => {
   };
 
   const loginAction = (e) => {
-    fetch("http://159.65.87.124:8080/api/user/login", {
+    fetch("https://bankapi.cloudwitches.online/api/user/login", {
       method: "POST",
       headers: {
         Accept: "application/json",

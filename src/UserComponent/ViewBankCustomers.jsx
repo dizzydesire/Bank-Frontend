@@ -22,7 +22,7 @@ const ViewBankCustomers = () => {
 
   const retrieveAllCustomers = async () => {
     const response = await axios.get(
-      "http://159.65.87.124:8080/api/user/bank/customers?bankId=" + bank.bank.id,
+      "https://bankapi.cloudwitches.online/api/user/bank/customers?bankId=" + bank.bank.id,
       {
         headers: {
           Authorization: "Bearer " + bank_jwtToken, // Replace with your actual JWT token
@@ -35,7 +35,7 @@ const ViewBankCustomers = () => {
 
   const retrieveBankAllCustomerByName = async () => {
     const response = await axios.get(
-      "http://159.65.87.124:8080/api/user/bank/customer/search?bankId=" +
+      "https://bankapi.cloudwitches.online/api/user/bank/customer/search?bankId=" +
         bank.bank.id +
         "&customerName=" +
         customerName,
@@ -87,7 +87,7 @@ const ViewBankCustomers = () => {
     updateUserStatusRequest.userId = userId;
     updateUserStatusRequest.status = "Active";
 
-    fetch("http://159.65.87.124:8080/api/user/update/status", {
+    fetch("https://bankapi.cloudwitches.online/api/user/update/status", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -155,7 +155,7 @@ const ViewBankCustomers = () => {
     updateUserStatusRequest.userId = userId;
     updateUserStatusRequest.status = "Deactivated";
 
-    fetch("http://159.65.87.124:8080/api/user/update/status", {
+    fetch("https://bankapi.cloudwitches.online/api/user/update/status", {
       method: "POST",
       headers: {
         Accept: "application/json",

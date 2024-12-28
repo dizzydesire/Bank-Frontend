@@ -12,7 +12,7 @@ const ViewBankAllTransactions = () => {
 
   const retrieveAllTransactions = async () => {
     const response = await axios.get(
-      "http://159.65.87.124:8080/api/bank/transaction/all/customer/fetch?bankId=" +
+      "https://bankapi.cloudwitches.online/api/bank/transaction/all/customer/fetch?bankId=" +
         bank.bank.id,
       {
         headers: {

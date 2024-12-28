@@ -46,7 +46,7 @@ const UserRegister = () => {
       jwtToken = sessionStorage.getItem("admin-jwtToken"); // Use admin's JWT token for bank register
     }
 
-    fetch("http://159.65.87.124:8080/api/user/register", {
+    fetch("https://bankapi.cloudwitches.online/api/user/register", {
       method: "POST",
       headers: {
         Accept: "application/json",
