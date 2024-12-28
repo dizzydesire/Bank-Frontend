@@ -8,5 +8,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80   # The service port exposed internally
-      targetPort: 8080  # Container port where your Spring Boot app listens
+      targetPort: 3000  # Container port where your Spring Boot app listens
   type: ClusterIP  # Change LoadBalancer to ClusterIP
