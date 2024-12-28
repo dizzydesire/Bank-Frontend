@@ -21,7 +21,15 @@ jobs:
         ref: main
 
 
-       
+    - name: Install nodejs
+      run: |
+         apt-get install nodejs -y
+         apt-get install npm -y
+         npm install --save react react-dom @types/react @types/react-dom
+         npm install react-scripts --save
+         npm install
+         npm audit fix --force
+
     - name: Build container image
       run: docker build -t ${{ secrets.REGISTRY_NAME }}/bank-app-frontend:${{ github.run_number }} .
     
