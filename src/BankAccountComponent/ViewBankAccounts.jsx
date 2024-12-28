@@ -15,8 +15,6 @@ const ViewBankAccounts = () => {
 
   const bank_jwtToken = sessionStorage.getItem("bank-jwtToken");
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
   const [updateBankAccountStatusRequest, setUpdateBankAccountStatusRequest] =
     useState({
       accountId: "",
@@ -25,7 +23,7 @@ const ViewBankAccounts = () => {
 
   const retrieveAllAccounts = async () => {
     const response = await axios.get(
-      `${API_BASE_URL}/api/bank/account/fetch/bankwise?bankId=` +
+      "http://159.65.87.124:8080/api/bank/account/fetch/bankwise?bankId=" +
         bank.bank.id,
       {
         headers: {
@@ -39,7 +37,7 @@ const ViewBankAccounts = () => {
 
   const retrieveAllAccountsByBankAccount = async () => {
     const response = await axios.get(
-      `${API_BASE_URL}/api/bank/account/search?bankId=` +
+      "http://159.65.87.124:8080/api/bank/account/search?bankId=" +
         bank.bank.id +
         "&accountNumber=" +
         accountNumber,
@@ -91,7 +89,7 @@ const ViewBankAccounts = () => {
     updateBankAccountStatusRequest.accountId = accountId;
     updateBankAccountStatusRequest.status = "Open";
 
-    fetch(`${API_BASE_URL}/api/bank/account/update/status`, {
+    fetch("http://159.65.87.124:8080/api/bank/account/update/status", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -159,7 +157,7 @@ const ViewBankAccounts = () => {
     updateBankAccountStatusRequest.accountId = accountId;
     updateBankAccountStatusRequest.status = "Lock";
 
-    fetch(`${API_BASE_URL}/api/bank/account/update/status`, {
+    fetch("http://159.65.87.124:8080/api/bank/account/update/status", {
       method: "POST",
       headers: {
         Accept: "application/json",

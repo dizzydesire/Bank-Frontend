@@ -7,14 +7,13 @@ const UserLoginForm = () => {
   let navigate = useNavigate();
 
   const [loginRequest, setLoginRequest] = useState({});
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const handleUserInput = (e) => {
     setLoginRequest({ ...loginRequest, [e.target.name]: e.target.value });
   };
 
   const loginAction = (e) => {
-    fetch(`${API_BASE_URL}/api/user/login`, {
+    fetch("http://159.65.87.124:8080/api/user/login", {
       method: "POST",
       headers: {
         Accept: "application/json",

@@ -10,11 +10,9 @@ const ViewAllBanks = () => {
 
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
   const retrieveAllBanks = async () => {
     const response = await axios.get(
-      `${API_BASE_URL}/api/bank/fetch/all`,
+      "http://159.65.87.124:8080/api/bank/fetch/all",
       {
         headers: {
           Authorization: "Bearer " + admin_jwtToken, // Replace with your actual JWT token

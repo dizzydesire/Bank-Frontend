@@ -14,8 +14,6 @@ const AddBankAccount = () => {
 
   let navigate = useNavigate();
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
   const [bankAccount, setBankAccount] = useState({
     name: "",
     ifscCode: "",
@@ -29,7 +27,7 @@ const AddBankAccount = () => {
   };
 
   const saveAccount = (e) => {
-    fetch(`${API_BASE_URL}/api/bank/account/add`, {
+    fetch("http://159.65.87.124:8080/api/bank/account/add", {
       method: "POST",
       headers: {
         Accept: "application/json",

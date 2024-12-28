@@ -8,14 +8,12 @@ const AddBankForm = () => {
 
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
   let navigate = useNavigate();
 
   const retrieveAllBankUsers = async () => {
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/api/user/fetch/bank/managers`,
+        "http://159.65.87.124:8080/api/user/fetch/bank/managers",
         {
           headers: {
             Authorization: "Bearer " + admin_jwtToken, // Replace with your actual JWT token
@@ -58,7 +56,7 @@ const AddBankForm = () => {
   };
 
   const saveBank = (e) => {
-    fetch(`${API_BASE_URL}/api/bank/register`, {
+    fetch("http://159.65.87.124:8080/api/bank/register", {
       method: "POST",
       headers: {
         Accept: "application/json",

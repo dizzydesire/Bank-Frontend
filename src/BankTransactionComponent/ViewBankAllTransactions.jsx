@@ -10,12 +10,9 @@ const ViewBankAllTransactions = () => {
   const bank = JSON.parse(sessionStorage.getItem("active-bank"));
   const bank_jwtToken = sessionStorage.getItem("bank-jwtToken");
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-  
-
   const retrieveAllTransactions = async () => {
     const response = await axios.get(
-      `${API_BASE_URL}/api/bank/transaction/all/customer/fetch?bankId=` +
+      "http://159.65.87.124:8080/api/bank/transaction/all/customer/fetch?bankId=" +
         bank.bank.id,
       {
         headers: {

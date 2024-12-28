@@ -14,8 +14,6 @@ const ViewAllBankAccounts = () => {
 
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
   const [updateBankAccountStatusRequest, setUpdateBankAccountStatusRequest] =
     useState({
       accountId: "",
@@ -24,7 +22,7 @@ const ViewAllBankAccounts = () => {
 
   const retrieveAllAccounts = async () => {
     const response = await axios.get(
-      `${API_BASE_URL}/api/bank/account/fetch/all`,
+      "http://159.65.87.124:8080/api/bank/account/fetch/all",
       {
         headers: {
           Authorization: "Bearer " + admin_jwtToken, // Replace with your actual JWT token
@@ -37,7 +35,7 @@ const ViewAllBankAccounts = () => {
 
   const retrieveAllAccountsByBankAccount = async () => {
     const response = await axios.get(
-      `${API_BASE_URL}/api/bank/account/search/all?accountNumber=` +
+      "http://159.65.87.124:8080/api/bank/account/search/all?accountNumber=" +
         accountNumber,
       {
         headers: {
@@ -87,7 +85,7 @@ const ViewAllBankAccounts = () => {
     updateBankAccountStatusRequest.accountId = accountId;
     updateBankAccountStatusRequest.status = "Open";
 
-    fetch(`${API_BASE_URL}/api/bank/account/update/status`, {
+    fetch("http://159.65.87.124:8080/api/bank/account/update/status", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -154,7 +152,7 @@ const ViewAllBankAccounts = () => {
     updateBankAccountStatusRequest.accountId = accountId;
     updateBankAccountStatusRequest.status = "Lock";
 
-    fetch(`${API_BASE_URL}/api/bank/account/update/status`, {
+    fetch("http://159.65.87.124:8080/api/bank/account/update/status", {
       method: "POST",
       headers: {
         Accept: "application/json",

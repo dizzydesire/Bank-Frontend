@@ -19,8 +19,6 @@ const ViewCustomerTransactions = () => {
   let bankToken = sessionStorage.getItem("bank-jwtToken");
   let customerToken = sessionStorage.getItem("customer-jwtToken");
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
   if (adminToken) {
     jwtToken = adminToken;
   } else if (bankToken) {
@@ -31,7 +29,7 @@ const ViewCustomerTransactions = () => {
 
   const retrieveAllTransactions = async () => {
     const response = await axios.get(
-      `${API_BASE_URL}/api/bank/transaction/history?userId=` +
+      "http://159.65.87.124:8080/api/bank/transaction/history?userId=" +
         customer.id,
       {
         headers: {

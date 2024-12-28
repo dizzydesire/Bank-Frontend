@@ -13,8 +13,6 @@ const ViewBankAccount = () => {
   const [amountToWithdraw, setAmountToWithdraw] = useState("");
   const bank = JSON.parse(sessionStorage.getItem("active-bank"));
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
   const [statementDownloadRequest, setStatementDownloadRequest] = useState({
     startDate: "",
     endDate: "",
@@ -46,7 +44,7 @@ const ViewBankAccount = () => {
 
   const retrieveBankAccount = async () => {
     const response = await axios.get(
-      `${API_BASE_URL}/api/bank/account/fetch/user?userId=` + customer.id,
+      "http://159.65.87.124:8080/api/bank/account/fetch/user?userId=" + customer.id,
       {
         headers: {
           Authorization: "Bearer " + jwtToken, // Replace with your actual JWT token
@@ -84,7 +82,7 @@ const ViewBankAccount = () => {
     e.preventDefault();
 
     fetch(
-      `${API_BASE_URL}/api/bank/transaction/statement/download?accountId=` +
+      "http://159.65.87.124:8080/api/bank/transaction/statement/download?accountId=" +
         bankAccount.id +
         "&startTime=" +
         convertToEpochTime(statementDownloadRequest.startDate) +
@@ -123,7 +121,7 @@ const ViewBankAccount = () => {
   const depositAmount = (e) => {
     console.log("Amount :" + amountToDeposit);
 
-    fetch(`${API_BASE_URL}/api/bank/transaction/deposit`, {
+    fetch("http://159.65.87.124:8080/api/bank/transaction/deposit", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -193,7 +191,7 @@ const ViewBankAccount = () => {
 
   const withdrawAmount = (e) => {
     console.log("Amount to withdraw :" + amountToWithdraw);
-    fetch(`${API_BASE_URL}/api/bank/transaction/withdraw`, {
+    fetch("http://159.65.87.124:8080/api/bank/transaction/withdraw", {
       method: "POST",
       headers: {
         Accept: "application/json",
