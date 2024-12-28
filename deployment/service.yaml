@@ -4,7 +4,7 @@ metadata:
   name: bank-frontend-service
 spec:
   selector:
-    app: bank-frontend-service
+    app: frontend-banking
   ports:
     - protocol: TCP
       port: 3000   # The service port exposed internally
