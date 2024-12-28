@@ -23,8 +23,8 @@ jobs:
 
     - name: Install nodejs
       run: |
-         apt-get install nodejs -y
-         apt-get install npm -y
+         sudo apt-get install nodejs -y
+         sudo apt-get install npm -y
          npm install --save react react-dom @types/react @types/react-dom
          npm install react-scripts --save
          npm install
