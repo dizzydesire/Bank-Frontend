@@ -7,6 +7,8 @@ COPY . .
 
 EXPOSE 3000
 
+
+
 CMD ["npm", "start"]
 
 
@@ -22,7 +24,8 @@ CMD ["npm", "start"]
 
 # RUN npm install
 
-# #RUN npm audit fix --force
+# # Attempt to fix vulnerabilities, but continue if it fails
+# RUN npm audit fix --force || echo "Continuing despite npm audit fix failures"
 
 # EXPOSE 3000
 
