@@ -7,6 +7,6 @@ spec:
     app: bank-frontend-service
   ports:
     - protocol: TCP
-      port: 80   # The service port exposed internally
+      port: 3000   # The service port exposed internally
       targetPort: 3000  # Container port where your Spring Boot app listens
   type: ClusterIP  # Change LoadBalancer to ClusterIP
