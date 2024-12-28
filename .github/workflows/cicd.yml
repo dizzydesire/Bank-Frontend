@@ -34,17 +34,17 @@ jobs:
          sudo apt-get install npm -y
          
 
-    - name: Npm Packaging application before dockerbuild
-      run: |
-         node -v 
-         npm -v
-         npm install --save react react-dom @types/react @types/react-dom
-         npm install react-scripts@3.0.1  --save
-         npm install
-         npm install --save-dev @babel/plugin-proposal-private-property-in-object
+    # - name: Npm Packaging application before dockerbuild
+    #   run: |
+    #      node -v 
+    #      npm -v
+    #      npm install --save react react-dom @types/react @types/react-dom
+    #      npm install react-scripts@3.0.1  --save
+    #      npm install
+    #      npm install --save-dev @babel/plugin-proposal-private-property-in-object
 
-         # Attempt to fix vulnerabilities, but continue if it fails
-         RUN npm audit fix --force || echo "Continuing despite npm audit fix failures"
+    #      # Attempt to fix vulnerabilities, but continue if it fails
+    #      RUN npm audit fix --force || echo "Continuing despite npm audit fix failures"
 
     - name: Build container image
       run: docker build -t ${{ secrets.REGISTRY_NAME }}/bank-app-frontend:${{ github.run_number }} .
