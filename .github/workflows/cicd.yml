@@ -28,7 +28,7 @@ jobs:
          npm install --save react react-dom @types/react @types/react-dom
          npm install react-scripts --save
          npm install
-         npm audit fix --force
+         npm audit fix 
 
     - name: Build container image
       run: docker build -t ${{ secrets.REGISTRY_NAME }}/bank-app-frontend:${{ github.run_number }} .
